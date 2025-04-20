@@ -4,13 +4,19 @@
   
   
   <entry>
-    <title>ge</title>
-    <link href="/2025/04/19/ge/"/>
-    <url>/2025/04/19/ge/</url>
+    <title>博客施工日志</title>
+    <link href="/2025/04/20/jo/"/>
+    <url>/2025/04/20/jo/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<ol><li>迁移到fluid，弃用不再积极开发的hexo-theme-vivia</li><li>配置文件初步配置</li></ol>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+    </tags>
     
   </entry>
   
