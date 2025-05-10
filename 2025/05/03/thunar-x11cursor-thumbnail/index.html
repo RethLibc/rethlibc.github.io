@@ -19,16 +19,16 @@
   <meta name="author" content="RethLibc">
   <meta name="keywords" content="">
   
-    <meta name="description" content="致谢：本文所提供的方案全部由Toz提供，我将其整理为博文，以方便其它中文用户的需要https:&#x2F;&#x2F;forum.xfce.org&#x2F;viewtopic.php?id&#x3D;18525            问题thunar似乎默认不支持显示x11光标文件的缩略图，Toz提供了一个自定义缩略图的方案来解决这个问题 安装请确保以下软件包都安装了： 1sudo pacman -S xcu">
+    <meta name="description" content="致谢：本文所提供的方案全部由Toz提供，我将其整理为笔记，以方便其它中文用户的需要https:&#x2F;&#x2F;forum.xfce.org&#x2F;viewtopic.php?id&#x3D;18525            问题thunar似乎默认不支持显示x11光标文件的缩略图，Toz提供了一个自定义缩略图的方案来解决这个问题 安装请确保以下软件包都安装了： 1sudo pacman -S xcu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="手动为thunar增加x11光标缩略图支持">
 <meta property="og:url" content="http://example.com/2025/05/03/thunar-x11cursor-thumbnail/index.html">
 <meta property="og:site_name" content="RethLibc的小窝">
-<meta property="og:description" content="致谢：本文所提供的方案全部由Toz提供，我将其整理为博文，以方便其它中文用户的需要https:&#x2F;&#x2F;forum.xfce.org&#x2F;viewtopic.php?id&#x3D;18525            问题thunar似乎默认不支持显示x11光标文件的缩略图，Toz提供了一个自定义缩略图的方案来解决这个问题 安装请确保以下软件包都安装了： 1sudo pacman -S xcu">
+<meta property="og:description" content="致谢：本文所提供的方案全部由Toz提供，我将其整理为笔记，以方便其它中文用户的需要https:&#x2F;&#x2F;forum.xfce.org&#x2F;viewtopic.php?id&#x3D;18525            问题thunar似乎默认不支持显示x11光标文件的缩略图，Toz提供了一个自定义缩略图的方案来解决这个问题 安装请确保以下软件包都安装了： 1sudo pacman -S xcu">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.picui.cn/free/2025/05/03/68155ecbdf726.jpeg">
 <meta property="article:published_time" content="2025-05-03T00:01:53.000Z">
-<meta property="article:modified_time" content="2025-05-03T00:26:28.000Z">
+<meta property="article:modified_time" content="2025-05-10T03:51:33.000Z">
 <meta property="article:author" content="RethLibc">
 <meta property="article:tag" content="xfce">
 <meta property="article:tag" content="linux">
@@ -81,7 +81,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":30,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -286,7 +286,7 @@
               <div class="markdown-body">
                 
                 <div class="note note-primary">
-            <p>致谢：<br>本文所提供的方案全部由Toz提供，我将其整理为博文，以方便其它中文用户的需要<br><a target="_blank" rel="noopener" href="https://forum.xfce.org/viewtopic.php?id=18525">https://forum.xfce.org/viewtopic.php?id=18525</a></p>
+            <p>致谢：<br>本文所提供的方案全部由Toz提供，我将其整理为笔记，以方便其它中文用户的需要<br><a target="_blank" rel="noopener" href="https://forum.xfce.org/viewtopic.php?id=18525">https://forum.xfce.org/viewtopic.php?id=18525</a></p>
           </div>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>thunar似乎默认不支持显示x11光标文件的缩略图，Toz提供了一个自定义缩略图的方案来解决这个问题</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>请确保以下软件包都安装了：</p>
