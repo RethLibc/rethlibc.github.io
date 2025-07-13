@@ -19,27 +19,26 @@
   <meta name="author" content="RethLibc">
   <meta name="keywords" content="">
   
-    <meta name="description" content="致谢：本文所提供的方案全部由Toz提供，我将其整理为笔记，以方便其它中文用户的需要https:&#x2F;&#x2F;forum.xfce.org&#x2F;viewtopic.php?id&#x3D;18525            问题thunar似乎默认不支持显示x11光标文件的缩略图，Toz提供了一个自定义缩略图的方案来解决这个问题 安装请确保以下软件包都安装了： 1sudo pacman -S xcu">
+    <meta name="description" content="arch官方源里带了一个叫arch-wiki-lite的包，可以用在终端下离线查看archwiki（或打开archwiki的html文件），但是我个人不太喜欢它的TUI界面（dialog），于是就有了自己做的想法 必要的软件包fzf - 强大的模糊查找器ripgrep - 提供rg命令（grep工具的替代品） 1sudo pacman -S fzf ripgrep  实例1234567#!&#x2F;bin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="手动为thunar增加x11光标缩略图支持">
-<meta property="og:url" content="http://example.com/2025/05/03/thunar-x11cursor-thumbnail/index.html">
+<meta property="og:title" content="使用自制archwiki查看器代替arch-wiki-lite">
+<meta property="og:url" content="http://example.com/2025/07/13/archlinux-wiki-search-for-fzf/index.html">
 <meta property="og:site_name" content="RethLibc的小窝">
-<meta property="og:description" content="致谢：本文所提供的方案全部由Toz提供，我将其整理为笔记，以方便其它中文用户的需要https:&#x2F;&#x2F;forum.xfce.org&#x2F;viewtopic.php?id&#x3D;18525            问题thunar似乎默认不支持显示x11光标文件的缩略图，Toz提供了一个自定义缩略图的方案来解决这个问题 安装请确保以下软件包都安装了： 1sudo pacman -S xcu">
+<meta property="og:description" content="arch官方源里带了一个叫arch-wiki-lite的包，可以用在终端下离线查看archwiki（或打开archwiki的html文件），但是我个人不太喜欢它的TUI界面（dialog），于是就有了自己做的想法 必要的软件包fzf - 强大的模糊查找器ripgrep - 提供rg命令（grep工具的替代品） 1sudo pacman -S fzf ripgrep  实例1234567#!&#x2F;bin">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pic1.imgdb.cn/item/6870ba5058cb8da5c89be654.png">
-<meta property="article:published_time" content="2025-05-03T00:01:53.000Z">
-<meta property="article:modified_time" content="2025-07-11T07:24:53.800Z">
+<meta property="og:image" content="https://pic1.imgdb.cn/item/6873845e58cb8da5c8a7b0c1.png">
+<meta property="article:published_time" content="2025-07-13T08:22:52.000Z">
+<meta property="article:modified_time" content="2025-07-13T10:12:30.155Z">
 <meta property="article:author" content="RethLibc">
+<meta property="article:tag" content="wiki">
 <meta property="article:tag" content="linux">
-<meta property="article:tag" content="xfce">
-<meta property="article:tag" content="thunar">
-<meta property="article:tag" content="缩略图">
+<meta property="article:tag" content="archlinux">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://pic1.imgdb.cn/item/6870ba5058cb8da5c89be654.png">
+<meta name="twitter:image" content="https://pic1.imgdb.cn/item/6873845e58cb8da5c8a7b0c1.png">
   
   
   
-  <title>手动为thunar增加x11光标缩略图支持 - RethLibc的小窝</title>
+  <title>使用自制archwiki查看器代替arch-wiki-lite - RethLibc的小窝</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,13 +202,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://pic1.imgdb.cn/item/686fa80458cb8da5c89a981f.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://pic1.imgdb.cn/item/686f941358cb8da5c89a93d1.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="手动为thunar增加x11光标缩略图支持"></span>
+            <span id="subtitle" data-typed-text="使用自制archwiki查看器代替arch-wiki-lite"></span>
           
         </div>
 
@@ -220,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-05-03 08:01" pubdate>
-          2025年5月3日 早上
+        <time datetime="2025-07-13 16:22" pubdate>
+          2025年7月13日 下午
         </time>
       </span>
     
@@ -232,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          215 字
+          470 字
         
       </span>
     
@@ -243,7 +242,7 @@
         
         
         
-          2 分钟
+          4 分钟
         
       </span>
     
@@ -280,23 +279,33 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">手动为thunar增加x11光标缩略图支持</h1>
+            <h1 id="seo-header">使用自制archwiki查看器代替arch-wiki-lite</h1>
             
             
               <div class="markdown-body">
                 
-                <div class="note note-primary">
-            <p>致谢：<br>本文所提供的方案全部由Toz提供，我将其整理为笔记，以方便其它中文用户的需要<br><a target="_blank" rel="noopener" href="https://forum.xfce.org/viewtopic.php?id=18525">https://forum.xfce.org/viewtopic.php?id=18525</a></p>
-          </div>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>thunar似乎默认不支持显示x11光标文件的缩略图，Toz提供了一个自定义缩略图的方案来解决这个问题</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>请确保以下软件包都安装了：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -S xcur2png imagemagick tumbler libxml2 libgepub libopenraw<br></code></pre></td></tr></table></figure>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h4 id="1-创建包含以下内容的文件-usr-share-thumbnailers-xcusrsor-thumbnailer："><a href="#1-创建包含以下内容的文件-usr-share-thumbnailers-xcusrsor-thumbnailer：" class="headerlink" title="1. 创建包含以下内容的文件/usr/share/thumbnailers/xcusrsor.thumbnailer："></a>1. 创建包含以下内容的文件<code>/usr/share/thumbnailers/xcusrsor.thumbnailer</code>：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[Thumbnailer Entry]<br>Version=1.0<br>Encoding=UTF-8<br>Type=X-Thumbnailer<br>Name=Xcursor Thumbnailer<br>MimeType=image/x-xcursor;<br>Exec=/usr/local/bin/xcursorthumbs %i %o %s<br></code></pre></td></tr></table></figure>
-<h4 id="2-创建脚本-usr-local-bin-xcursorthumbs："><a href="#2-创建脚本-usr-local-bin-xcursorthumbs：" class="headerlink" title="2. 创建脚本/usr/local/bin/xcursorthumbs："></a>2. 创建脚本<code>/usr/local/bin/xcursorthumbs</code>：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/usr/bin/env bash</span><br><br><span class="hljs-keyword">if</span> TEMP=$(<span class="hljs-built_in">mktemp</span> --directory --tmpdir tumbler-xcur-XXXXXX); <span class="hljs-keyword">then</span><br>	xcur2png -d <span class="hljs-variable">$TEMP</span> -q -c - <span class="hljs-variable">$1</span> &gt; /dev/null 2&gt;&amp;1	<br>	convert -thumbnail <span class="hljs-string">&quot;<span class="hljs-variable">$3</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$TEMP</span>/*_000.png&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$2</span>&quot;</span> &amp;&gt;/dev/null<br>	<span class="hljs-built_in">rm</span> -rf <span class="hljs-variable">$TEMP</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
-<h4 id="3-使脚本可执行："><a href="#3-使脚本可执行：" class="headerlink" title="3. 使脚本可执行："></a>3. 使脚本可执行：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chmod</span> +x /usr/local/bin/xcursorthumbs<br></code></pre></td></tr></table></figure>
-<h4 id="4-重启启动thunar和tumblerd"><a href="#4-重启启动thunar和tumblerd" class="headerlink" title="4.重启启动thunar和tumblerd"></a>4.重启启动thunar和tumblerd</h4><p>我选择直接重启：</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">reboot</span><br></code></pre></td></tr></table></figure>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="https://pic1.imgdb.cn/item/6870ba5058cb8da5c89be654.png" srcset="/img/loading.gif" lazyload></p>
+                <p>arch官方源里带了一个叫<code>arch-wiki-lite</code>的包，可以用在终端下离线查看archwiki（或打开archwiki的html文件），但是我个人不太喜欢它的TUI界面（<code>dialog</code>），于是就有了自己做的想法</p>
+<h1 id="必要的软件包"><a href="#必要的软件包" class="headerlink" title="必要的软件包"></a>必要的软件包</h1><p><code>fzf</code> - 强大的模糊查找器<br><code>ripgrep</code> - 提供<code>rg</code>命令（grep工具的替代品）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -S fzf ripgrep<br></code></pre></td></tr></table></figure>
+
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-built_in">cd</span> /usr/share/doc/arch-wiki/html/en &amp;&amp;<br>  rg -l <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> | fzf \<br>    --<span class="hljs-built_in">bind</span> <span class="hljs-string">&#x27;ctrl-o:execute(xdg-open &#123;&#125;)+abort&#x27;</span> \<br>    --<span class="hljs-built_in">bind</span> <span class="hljs-string">&#x27;ctrl-p:preview-up,ctrl-n:preview-down,ctrl-b:preview-page-up,ctrl-f:preview-page-down&#x27;</span> \<br>    --preview <span class="hljs-string">&#x27;w3m &#123;&#125;&#x27;</span> \<br>    --<span class="hljs-built_in">bind</span> <span class="hljs-string">&#x27;enter:execute(xdg-open &#123;&#125;)+abort&#x27;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>在此之前您需要安装<code>arch-wiki-docs</code>包以提供archwiki的html文档</p>
+</blockquote>
+<ul>
+<li><code>Ctrl + o</code> 会直接使用xdg-open打开浏览器查看，tty&#x2F;ssh下会打开w3m之类的终端浏览器</li>
+<li><code>--bind &#39;enter:execute(xdg-open &#123;&#125;)+abort&#39;</code> 这条设置了在fzf中对文件回车后执行上述操作（使用xdg-open打开浏览器）</li>
+<li><code>--preview &#39;w3m &#123;&#125;&#39;</code> 左边会有一个预览，用w3m查看html实现</li>
+<li><code>--bind &#39;ctrl-p:preview-up,ctrl-n:prev…</code> 这是预览窗口的快捷键，<code>Ctrl+p或n</code>上&#x2F;下滚动，<code>Ctrl+b/f</code>上&#x2F;下翻页</li>
+</ul>
+<p>下一步将以上代码粘贴到一个文件里，我假设您的文件名叫作<code>wiki</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#使文件可执行</span><br><span class="hljs-built_in">chmod</span> + x wiki<br><br><span class="hljs-comment">#直接使用，用于仅搜索标题</span><br>./wiki<br></code></pre></td></tr></table></figure>
+<p><img src="https://pic1.imgdb.cn/item/68737f2558cb8da5c8a7ad14.png" srcset="/img/loading.gif" lazyload alt="1"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#如果你想搜索文章的内容，如一个关键词“XBOOTLDR”，可以这样做</span><br>./wiki XBOOTLDR<br></code></pre></td></tr></table></figure>
+<p><img src="https://pic1.imgdb.cn/item/68737f2658cb8da5c8a7ad15.png" srcset="/img/loading.gif" lazyload alt="2"></p>
+<p>如图所示，搜索的范围会再次缩小</p>
+<p>另外，如果您使用<code>arch-wiki-docs-zh-cn</code>只需要将脚本中的<code>/usr/share/doc/arch-wiki/html/en</code>替换为<code>/usr/share/doc/arch-wiki-zh-cn/html</code>即可</p>
+<h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>本来不想同时使用两个博客（博客园与rethlibc.github.io），但是因为github.io在国内访问困难，想了想于是干脆同步更新了～</p>
 
                 
               </div>
@@ -309,13 +318,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
+        <a href="/tags/wiki/" class="print-no-link">#wiki</a>
+      
         <a href="/tags/linux/" class="print-no-link">#linux</a>
       
-        <a href="/tags/xfce/" class="print-no-link">#xfce</a>
-      
-        <a href="/tags/thunar/" class="print-no-link">#thunar</a>
-      
-        <a href="/tags/%E7%BC%A9%E7%95%A5%E5%9B%BE/" class="print-no-link">#缩略图</a>
+        <a href="/tags/archlinux/" class="print-no-link">#archlinux</a>
       
     </div>
   
@@ -327,8 +334,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>手动为thunar增加x11光标缩略图支持</div>
-      <div>http://example.com/2025/05/03/thunar-x11cursor-thumbnail/</div>
+      <div>使用自制archwiki查看器代替arch-wiki-lite</div>
+      <div>http://example.com/2025/07/13/archlinux-wiki-search-for-fzf/</div>
     </div>
     <div class="license-meta">
       
@@ -340,7 +347,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年5月3日</div>
+          <div>2025年7月13日</div>
         </div>
       
       
@@ -372,15 +379,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/07/13/archlinux-wiki-search-for-fzf/" title="使用自制archwiki查看器代替arch-wiki-lite">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">使用自制archwiki查看器代替arch-wiki-lite</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2025/05/03/thunar-x11cursor-thumbnail/" title="手动为thunar增加x11光标缩略图支持">
+                        <span class="hidden-mobile">手动为thunar增加x11光标缩略图支持</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

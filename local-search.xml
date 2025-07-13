@@ -4,6 +4,29 @@
   
   
   <entry>
+    <title>使用自制archwiki查看器代替arch-wiki-lite</title>
+    <link href="/2025/07/13/archlinux-wiki-search-for-fzf/"/>
+    <url>/2025/07/13/archlinux-wiki-search-for-fzf/</url>
+    
+    <content type="html"><![CDATA[<p>arch官方源里带了一个叫<code>arch-wiki-lite</code>的包，可以用在终端下离线查看archwiki（或打开archwiki的html文件），但是我个人不太喜欢它的TUI界面（<code>dialog</code>），于是就有了自己做的想法</p><h1 id="必要的软件包"><a href="#必要的软件包" class="headerlink" title="必要的软件包"></a>必要的软件包</h1><p><code>fzf</code> - 强大的模糊查找器<br><code>ripgrep</code> - 提供<code>rg</code>命令（grep工具的替代品）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -S fzf ripgrep<br></code></pre></td></tr></table></figure><h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-built_in">cd</span> /usr/share/doc/arch-wiki/html/en &amp;&amp;<br>  rg -l <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> | fzf \<br>    --<span class="hljs-built_in">bind</span> <span class="hljs-string">&#x27;ctrl-o:execute(xdg-open &#123;&#125;)+abort&#x27;</span> \<br>    --<span class="hljs-built_in">bind</span> <span class="hljs-string">&#x27;ctrl-p:preview-up,ctrl-n:preview-down,ctrl-b:preview-page-up,ctrl-f:preview-page-down&#x27;</span> \<br>    --preview <span class="hljs-string">&#x27;w3m &#123;&#125;&#x27;</span> \<br>    --<span class="hljs-built_in">bind</span> <span class="hljs-string">&#x27;enter:execute(xdg-open &#123;&#125;)+abort&#x27;</span><br></code></pre></td></tr></table></figure><blockquote><p>在此之前您需要安装<code>arch-wiki-docs</code>包以提供archwiki的html文档</p></blockquote><ul><li><code>Ctrl + o</code> 会直接使用xdg-open打开浏览器查看，tty&#x2F;ssh下会打开w3m之类的终端浏览器</li><li><code>--bind &#39;enter:execute(xdg-open &#123;&#125;)+abort&#39;</code> 这条设置了在fzf中对文件回车后执行上述操作（使用xdg-open打开浏览器）</li><li><code>--preview &#39;w3m &#123;&#125;&#39;</code> 左边会有一个预览，用w3m查看html实现</li><li><code>--bind &#39;ctrl-p:preview-up,ctrl-n:prev…</code> 这是预览窗口的快捷键，<code>Ctrl+p或n</code>上&#x2F;下滚动，<code>Ctrl+b/f</code>上&#x2F;下翻页</li></ul><p>下一步将以上代码粘贴到一个文件里，我假设您的文件名叫作<code>wiki</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#使文件可执行</span><br><span class="hljs-built_in">chmod</span> + x wiki<br><br><span class="hljs-comment">#直接使用，用于仅搜索标题</span><br>./wiki<br></code></pre></td></tr></table></figure><p><img src="https://pic1.imgdb.cn/item/68737f2558cb8da5c8a7ad14.png" alt="1"></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#如果你想搜索文章的内容，如一个关键词“XBOOTLDR”，可以这样做</span><br>./wiki XBOOTLDR<br></code></pre></td></tr></table></figure><p><img src="https://pic1.imgdb.cn/item/68737f2658cb8da5c8a7ad15.png" alt="2"></p><p>如图所示，搜索的范围会再次缩小</p><p>另外，如果您使用<code>arch-wiki-docs-zh-cn</code>只需要将脚本中的<code>/usr/share/doc/arch-wiki/html/en</code>替换为<code>/usr/share/doc/arch-wiki-zh-cn/html</code>即可</p><h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>本来不想同时使用两个博客（博客园与rethlibc.github.io），但是因为github.io在国内访问困难，想了想于是干脆同步更新了～</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wiki</tag>
+      
+      <tag>linux</tag>
+      
+      <tag>archlinux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>手动为thunar增加x11光标缩略图支持</title>
     <link href="/2025/05/03/thunar-x11cursor-thumbnail/"/>
     <url>/2025/05/03/thunar-x11cursor-thumbnail/</url>
@@ -14,9 +37,9 @@
     
     <tags>
       
-      <tag>xfce</tag>
-      
       <tag>linux</tag>
+      
+      <tag>xfce</tag>
       
       <tag>thunar</tag>
       
